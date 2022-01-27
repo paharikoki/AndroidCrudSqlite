@@ -19,7 +19,7 @@ public class Helper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,color text not null)";
+        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,warna text not null)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
     }
