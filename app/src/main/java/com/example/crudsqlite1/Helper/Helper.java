@@ -19,7 +19,7 @@ public class Helper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,color text not null)";
+        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,warna text not null)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
     }
@@ -32,7 +32,7 @@ public class Helper extends SQLiteOpenHelper {
 
     public ArrayList<HashMap<String,String>> getAll(){
         ArrayList<HashMap<String,String>> list = new ArrayList<>();
-        String QUERY =  "sELECT * FROM tb_rental";
+        String QUERY =  "SELECT * FROM tb_rental";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(QUERY,null);
         if (cursor.moveToFirst()){
