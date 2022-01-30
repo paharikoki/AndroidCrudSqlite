@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 final String id = listData.get(i).getId();
                 final String nama = listData.get(i).getNama();
                 final String warna = listData.get(i).getWarna();
-                final CharSequence[] dialogItems = {"Edit","Hapus"};
+                final CharSequence[] dialogItems = {"Lihat","Edit","Hapus"};
 
                 dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setItems(dialogItems, new DialogInterface.OnClickListener() {
@@ -56,13 +56,20 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i){
                             case 0:
+                                Intent intentDetails = new Intent(MainActivity.this,DetailActivity.class);
+                                intentDetails.putExtra("id",id);
+                                intentDetails.putExtra("nama",nama);
+                                intentDetails.putExtra("warna",warna);
+                                startActivity(intentDetails);
+                                break;
+                            case 1:
                                 Intent intent = new Intent(MainActivity.this,EditorActivity.class);
                                 intent.putExtra("id",id);
                                 intent.putExtra("nama",nama);
                                 intent.putExtra("warna",warna);
                                 startActivity(intent);
                                 break;
-                            case  1:
+                            case  2:
                                 db.Delete(Integer.parseInt(id));
                                 listData.clear();
                                 getData();
