@@ -8,20 +8,56 @@
         android:orientation="vertical"
         android:padding="14sp"
         tools:context=".EditorActivity">
-	<EditText
+	<ImageView
+		android:id="@+id/iv_image"
+		android:layout_width="match_parent"
+		android:layout_height="300sp"
+		android:layout_marginBottom="30sp"
+		android:src="@drawable/empty"
+		/>
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/fab_image"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right"
+		android:layout_marginTop="-100dp"
+		android:layout_marginBottom="50sp"
+		android:src="@drawable/imagee"
+		/>
+	<com.google.android.material.textfield.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="15sp"
+		>
+
+		<EditText
 			android:id="@+id/et_nama"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="text"
+			android:textSize="18dp"
 			android:hint="Nama Mobil"
-	/>
-	<EditText
+			/>
+
+	</com.google.android.material.textfield.TextInputLayout>
+
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="15sp"
+		>
+
+		<EditText
 			android:id="@+id/et_warna"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="text"
 			android:hint="Warna Mobil"
-	/>
+			/>
+
+	</com.google.android.material.textfield.TextInputLayout>
+
 	<Button
 			android:id="@+id/btn_save"
 			android:layout_width="match_parent"
