@@ -32,7 +32,7 @@ public class Helper extends SQLiteOpenHelper {
 
     public ArrayList<HashMap<String,String>> getAll(){
         ArrayList<HashMap<String,String>> list = new ArrayList<>();
-        String QUERY =  "sELECT * FROM tb_rental";
+        String QUERY =  "SELECT * FROM tb_rental";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(QUERY,null);
         if (cursor.moveToFirst()){

@@ -4,11 +4,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.crudsqlite1.Helper.Helper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EditorActivity extends AppCompatActivity {
 
@@ -16,6 +18,8 @@ public class EditorActivity extends AppCompatActivity {
     private Button btnsave;
     private Helper db = new Helper(this);
     private String id,nama,warna;
+    private FloatingActionButton fabimage;
+    private ImageView ivimage;
 
 
 
@@ -28,6 +32,8 @@ public class EditorActivity extends AppCompatActivity {
         etnama = findViewById(R.id.et_nama);
         etwarna= findViewById(R.id.et_warna);
         btnsave = findViewById(R.id.btn_save);
+        ivimage= findViewById(R.id.iv_image);
+        fabimage=findViewById(R.id.fab_image);
 
         id = getIntent().getStringExtra("id");
         nama = getIntent().getStringExtra("nama");
@@ -54,6 +60,18 @@ public class EditorActivity extends AppCompatActivity {
                 }
             }
         });
+        ivimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickImage();
+            }
+        });
+        fabimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickImage();
+            }
+        });
     }
     private void Save(){
         if (String.valueOf(etnama.getText()).equals("") || String.valueOf(etwarna.getText()).equals("")){
@@ -70,5 +88,8 @@ public class EditorActivity extends AppCompatActivity {
             db.Update(Integer.parseInt(id),etnama.getText().toString(),etwarna.getText().toString());
             finish();
         }
+    }
+    private void pickImage(){
+        Toast.makeText(EditorActivity.this, "Harusnya ini Buka Kamera & Galery", Toast.LENGTH_SHORT).show();
     }
 }
