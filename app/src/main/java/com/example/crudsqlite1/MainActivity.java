@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         listView= findViewById(R.id.lv_data);
         adapter = new Adapter(MainActivity.this,listData);
         listView.setAdapter(adapter);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final String id = listData.get(i).getId();
                 final String nama = listData.get(i).getNama();
                 final String warna = listData.get(i).getWarna();
@@ -77,11 +77,48 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }).show();
-
-
-                return false;
             }
         });
+//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                final String id = listData.get(i).getId();
+//                final String nama = listData.get(i).getNama();
+//                final String warna = listData.get(i).getWarna();
+//                final CharSequence[] dialogItems = {"Lihat","Edit","Hapus"};
+//
+//                dialog = new AlertDialog.Builder(MainActivity.this);
+//                dialog.setItems(dialogItems, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        switch (i){
+//                            case 0:
+//                                Intent intentDetails = new Intent(MainActivity.this,DetailActivity.class);
+//                                intentDetails.putExtra("id",id);
+//                                intentDetails.putExtra("nama",nama);
+//                                intentDetails.putExtra("warna",warna);
+//                                startActivity(intentDetails);
+//                                break;
+//                            case 1:
+//                                Intent intent = new Intent(MainActivity.this,EditorActivity.class);
+//                                intent.putExtra("id",id);
+//                                intent.putExtra("nama",nama);
+//                                intent.putExtra("warna",warna);
+//                                startActivity(intent);
+//                                break;
+//                            case  2:
+//                                db.Delete(Integer.parseInt(id));
+//                                listData.clear();
+//                                getData();
+//                                break;
+//                        }
+//                    }
+//                }).show();
+//
+//
+//                return false;
+//            }
+//        });
         getData();
     }
     private void getData(){
