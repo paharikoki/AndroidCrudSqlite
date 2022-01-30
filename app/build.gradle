@@ -33,6 +33,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
+    //imagepicker lib
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:2.4.5'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
