@@ -2,10 +2,14 @@ package com.example.crudsqlite1.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.crudsqlite1.Model.Model;
 import com.example.crudsqlite1.R;
@@ -48,9 +52,14 @@ public class Adapter extends BaseAdapter {
         if (view != null){
             TextView nama = view.findViewById(R.id.tv_nama);
             TextView warna = view.findViewById(R.id.tv_warna);
+            ImageView image = view.findViewById(R.id.iv_image);
             Model data =listData.get(i);
             nama.setText(data.getNama());
             warna.setText(data.getWarna());
+            byte[] bytes = Base64.decode(data.getImage(),Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            image.setImageBitmap(bitmap);
+
         }
         return view;
     }

@@ -19,7 +19,7 @@ public class Helper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,warna text not null)";
+        final String SQL_CREATE_TABLE ="Create table tb_rental (id integer primary key autoincrement,nama text not null,warna text not null,image blob default null)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
     }
@@ -41,20 +41,21 @@ public class Helper extends SQLiteOpenHelper {
                 map.put("id",cursor.getString(0));
                 map.put("nama",cursor.getString(1));
                 map.put("warna",cursor.getString(2));
+                map.put("warna",cursor.getBlob(3));
                 list.add(map);
             }while (cursor.moveToNext());
         }
         cursor.close();
         return list;
     }
-    public void  Insert(String nama,String warna){
+    public void  Insert(String nama,String warna,byte[] image){
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "Insert into tb_rental (nama,warna) VALUES('"+nama+"','"+warna+"')";
+        String Query = "Insert into tb_rental (nama,warna,image) VALUES('"+nama+"','"+warna+"','"+image+"')";
         db.execSQL(Query);
     }
-    public void Update(int id,String nama,String warna){
+    public void Update(int id,String nama,String warna,byte[] image){
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "Update tb_rental set nama='"+nama+"',warna='"+warna+"' where id='"+id+"'";
+        String Query = "Update tb_rental set nama='"+nama+"',warna='"+warna+"',image='"+image+"' where id='"+id+"'";
         db.execSQL(Query);
     }
     public void Delete(int id){
