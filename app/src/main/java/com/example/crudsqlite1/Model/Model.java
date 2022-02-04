@@ -1,15 +1,17 @@
 package com.example.crudsqlite1.Model;
 
 public class Model {
-    private String id,nama,warna,image;
+    private String id,nama,warna;
+    private byte[] image;
 
     public Model(){
 
     }
-    public Model (String id,String nama,String warna,String image){
+    public Model (String id,String nama,String warna,byte[] image){
         this.id = id;
         this.nama = nama;
         this.warna = warna;
+        this.image = image;
     }
 
     public String getId() {
@@ -36,11 +38,11 @@ public class Model {
         this.warna = warna;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

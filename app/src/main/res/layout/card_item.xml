@@ -6,10 +6,10 @@
         android:orientation="horizontal"
         android:padding="15sp">
     <ImageView
-        android:id="@+id/iv_image"
+        android:id="@+id/tv_image"
         android:layout_width="120sp"
         android:layout_height="120sp"
-        android:layout_marginRight="20sp"
+        android:layout_marginEnd="20sp"
         android:src="@drawable/gambar"
         />
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:layout_marginBottom="15sp"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:textStyle="bold"
             />
         <TextView
