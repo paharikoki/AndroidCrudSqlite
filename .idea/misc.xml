@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectKu/Kolaborasi/AndroidCrudSqlite/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/ProjectKu/Kolaborasi/AndroidCrudSqlite/app/src/main/res/layout/activity_editor.xml" value="0.1078125" />
+        <entry key="..\:/ProjectKu/Kolaborasi/AndroidCrudSqlite/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/ProjectKu/Kolaborasi/AndroidCrudSqlite/app/src/main/res/layout/card_item.xml" value="0.209375" />
         <entry key="..\:/Users/ACER/Documents/ProjectIntellijIdea/AndroidCrudSqlite/app/src/main/res/layout/activity_detail.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/ACER/Documents/ProjectIntellijIdea/AndroidCrudSqlite/app/src/main/res/layout/activity_editor.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/ACER/Documents/ProjectIntellijIdea/AndroidCrudSqlite/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
