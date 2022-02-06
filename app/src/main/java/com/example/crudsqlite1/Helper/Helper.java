@@ -1,5 +1,6 @@
 package com.example.crudsqlite1.Helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +10,7 @@ import android.util.Base64;
 import com.example.crudsqlite1.Model.Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Helper extends SQLiteOpenHelper {
@@ -43,7 +45,7 @@ public class Helper extends SQLiteOpenHelper {
                 m.setId(cursor.getString(0));
                 m.setNama(cursor.getString(1));
                 m.setWarna(cursor.getString(2));
-                m.setImage(Base64.decode(cursor.getBlob(3), Base64.DEFAULT));
+                m.setImage(cursor.getBlob(3));
                 list.add(m);
             } while (cursor.moveToNext());
         }
@@ -53,19 +55,31 @@ public class Helper extends SQLiteOpenHelper {
 
     public void Insert(String nama, String warna, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "Insert into tb_rental (nama,warna,image) VALUES('" + nama + "','" + warna + "','" + image + "')";
-        db.execSQL(Query);
+//        String Query = "Insert into tb_rental (nama,warna,image) VALUES('" + nama + "','" + warna + "','" + image + "')";
+//        db.execSQL(Query);
+        ContentValues cv = new ContentValues();
+        cv.put("nama", nama);
+        cv.put("warna", warna);
+        cv.put("image", image);
+
+        db.insert("tb_rental", null, cv);
     }
 
     public void Update(int id, String nama, String warna, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "Update tb_rental set nama='" + nama + "',warna='" + warna + "',image='" + image + "' where id='" + id + "'";
-        db.execSQL(Query);
+//        String Query = "Update tb_rental set nama='" + nama + "',warna='" + warna + "',image='" + image + "' where id='" + id + "'";
+//        db.execSQL(Query);
+        ContentValues cv = new ContentValues();
+        cv.put("nama", nama);
+        cv.put("warna", warna);
+        cv.put("image", image);
+        db.update("tb_rental",cv,"id = ?", new String[]{String.valueOf(id)});
     }
 
     public void Delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "Delete From tb_rental where id='" + id + "'";
-        db.execSQL(Query);
+//        String Query = "Delete From tb_rental where id='" + id + "'";
+//        db.execSQL(Query);
+        db.delete("tb_rental", "id = ?", new String[]{String.valueOf(id)});
     }
 }

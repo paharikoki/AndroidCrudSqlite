@@ -24,10 +24,10 @@ import java.io.ByteArrayOutputStream;
 
 public class EditorActivity extends AppCompatActivity {
 
-    private EditText etnama,etwarna;
+    private EditText etnama, etwarna;
     private Button btnsave;
     private Helper db = new Helper(this);
-    private String id,nama,warna;
+    private String id, nama, warna;
     private FloatingActionButton fabimage;
     private ImageView ivimage;
     private byte[] image;
@@ -39,19 +39,19 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         etnama = findViewById(R.id.et_nama);
-        etwarna= findViewById(R.id.et_warna);
+        etwarna = findViewById(R.id.et_warna);
         btnsave = findViewById(R.id.btn_save);
-        ivimage= findViewById(R.id.iv_image);
-        fabimage=findViewById(R.id.fab_image);
+        ivimage = findViewById(R.id.iv_image);
+        fabimage = findViewById(R.id.fab_image);
 
         id = getIntent().getStringExtra("id");
         nama = getIntent().getStringExtra("nama");
         warna = getIntent().getStringExtra("warna");
         image = getIntent().getByteArrayExtra("image");
 
-        if (id==null || id.equals("")){
+        if (id == null || id.equals("")) {
             setTitle("Tambah Mobil Rental");
-        }else {
+        } else {
             setTitle("Edit Mobil Rental");
             etnama.setText(nama);
             etwarna.setText(warna);
@@ -61,41 +61,43 @@ public class EditorActivity extends AppCompatActivity {
         }
         btnsave.setOnClickListener(view -> {
             try {
-                if (id == null || id.equals("")){
+                if (id == null || id.equals("")) {
                     Save();
-                }else {
+                } else {
                     Edit();
                 }
-            }catch (Exception e){
-                Log.e("Saving",e.getMessage());
+            } catch (Exception e) {
+                Log.e("Saving", e.getMessage());
             }
         });
         ivimage.setOnClickListener(view -> pickImage());
         fabimage.setOnClickListener(view -> pickImage());
     }
-    private void Save(){
-        if (String.valueOf(etnama.getText()).equals("") || String.valueOf(etwarna.getText()).equals("")){
+
+    private void Save() {
+        if (String.valueOf(etnama.getText()).equals("") || String.valueOf(etwarna.getText()).equals("")) {
             Toast.makeText(getApplicationContext(), "Harap Isi Semua Field!", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             ByteArrayOutputStream outS = new ByteArrayOutputStream();
-            Bitmap bitmap = ((BitmapDrawable)ivimage.getDrawable()).getBitmap();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 50, outS);
+            Bitmap bitmap = ((BitmapDrawable) ivimage.getDrawable()).getBitmap();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outS);
             image = outS.toByteArray();
-            db.Insert(etnama.getText().toString(),etwarna.getText().toString(),image);
+            db.Insert(etnama.getText().toString(), etwarna.getText().toString(), image);
             Toast.makeText(getApplicationContext(), "Berhasil Menambahkan Data!", Toast.LENGTH_LONG).show();
             finish();
         }
     }
 
-    private void Edit(){
-        if (String.valueOf(etnama.getText()).equals("") || String.valueOf(etwarna.getText()).equals("")){
+    private void Edit() {
+        if (String.valueOf(etnama.getText()).equals("") || String.valueOf(etwarna.getText()).equals("")) {
             Toast.makeText(getApplicationContext(), "Harap Isi Semua Field!", Toast.LENGTH_SHORT).show();
-        }else{
-            db.Update(Integer.parseInt(id),etnama.getText().toString(),etwarna.getText().toString(),image);
+        } else {
+            db.Update(Integer.parseInt(id), etnama.getText().toString(), etwarna.getText().toString(), image);
             finish();
         }
     }
-    private void pickImage(){
+
+    private void pickImage() {
         ImagePicker.Companion.with(EditorActivity.this)
                 .crop()
                 .start();
