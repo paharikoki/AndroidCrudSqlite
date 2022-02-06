@@ -2,7 +2,6 @@ package com.example.crudsqlite1.Adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +49,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder> {
         holder.warna.setText(item.getWarna());
         byte[] img = item.getImage();
         ByteArrayInputStream imageStream = new ByteArrayInputStream(img);
-        Bitmap bitmap= BitmapFactory.decodeStream(imageStream);
+        Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
         holder.image.setImageBitmap(bitmap);
     }
 
